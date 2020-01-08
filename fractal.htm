@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fractal</title>
+    <script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"></script>
+    <script src="fractal.js">
+    </script>
+    <style>
+      a {
+        color: lightgray;
+      }
+      #panel {
+        display: none;
+        padding: 10px;
+      }
+      body {
+        color: gray;
+      }
+      input:not([type=button]) {
+        background-color: darkgray;
+        color: whitesmoke;
+      }
+      #color-sampler {
+        display: inline-block;
+        background-color: #ff0000;
+        width: 1em;
+        height: 1em;
+        border: 2px solid black;
+      }
+      .footer {
+          margin-top: 3em;
+          margin-left: 1em;
+          margin-right: 1em;
+      }
+    </style>
+  </head>
+  <body style="background-color: #191919">
+    <div>
+      <canvas id="canvas" width="640px" height="480px">
+      </canvas>
+    </div>
+    <div style="padding-bottom: 10px">
+      <a href="javascript:void(0)" onclick="showHidePanel()">&gt; Controls</a>
+      <div id="panel">
+        <div>
+          Branching Factor:
+          <input id="param-branch" type="number" min="1" max="8"></input>
+        </div>
+        <div>
+          Steps:
+          <input id="param-steps" type="number" min="1" max="6"></input>
+        </div>
+        <div>
+          Directional Variance:
+          <input id="param-dvar" type="range" min="0.1" max="1.5" step="0.01"></input>
+        </div>
+        <div>
+          Length:
+          <input id="param-length" type="range" min="5" max="25" step="1"></input>
+        </div>
+        <div>
+          Starting Color:
+          <input id="param-color-random" type="radio" name="color-type">Random</input>
+          <input id="param-color-select" type="radio" name="color-type">Select</input>
+          <input id="param-color-value" type="range" min="0.0" max="1.0" step="0.01"
+                 onchange="colorSelected()" oninput="colorSelected()">
+          </input>
+          <span id="color-sampler"></span>
+        </div>
+        <div>
+          Color Variance:
+          <input id="param-cvar" type="range" min="0.0" max="0.5" step="0.01"></input>
+        </div>
+      </div>
+    </div>
+    <input type="button" value="Generate" onclick="generateFrom()"></input>
+    <div class="footer">
+      Just a fun thing I made in my spare time. Enjoy :)<br/>
+      - Silvio Mayolo
+    </div>
+  </body>
+</html>
